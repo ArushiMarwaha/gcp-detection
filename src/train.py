@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from dataset import GCPDataset
 from model import GCPModel
 
-train_path = "../train_dataset"
+train_path = "C:/Users/arush/Desktop/Data/train_dataset"
 json_path = os.path.join(train_path,"curated_gcp_marks.json")
 
 with open(json_path) as f:
@@ -36,6 +36,16 @@ coord_loss = nn.MSELoss()
 class_loss = nn.CrossEntropyLoss()
 
 optimizer = torch.optim.Adam(model.parameters(),lr=1e-4)
+
+from torch.utils.data import random_split
+
+train_size = int(0.8 * len(dataset))
+val_size = len(dataset) - train_size
+
+train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
+
+train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True)
+val_loader = DataLoader(val_dataset, batch_size=8)
 
 epochs = 3
 
@@ -66,4 +76,4 @@ for epoch in range(epochs):
 
     print("Epoch:",epoch,"Loss:",total_loss/len(loader))
 
-torch.save(model.state_dict(),"../outputs/gcp_model.pth")
+torch.save(model.state_dict(), "gcp_model.pth")

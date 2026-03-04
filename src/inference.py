@@ -8,7 +8,7 @@ from model import GCPModel
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 model = GCPModel().to(device)
-model.load_state_dict(torch.load("../outputs/gcp_model.pth",map_location=device))
+model.load_state_dict(torch.load("gcp_model.pth", map_location=device))
 
 model.eval()
 
@@ -18,7 +18,7 @@ id_to_shape = {
 2:"L-Shaped"
 }
 
-test_path = "../test_dataset"
+test_path = "C:/Users/arush/Desktop/Data/test_dataset"
 
 test_images = []
 
