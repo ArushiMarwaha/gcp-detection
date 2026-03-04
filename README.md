@@ -152,3 +152,17 @@ gcp-detection
 └── README.md
 
 ```
+
+## Summary
+
+This project demonstrates a practical computer vision pipeline for detecting GCP markers in aerial imagery.
+
+The solution combines:
+
+- Dataset exploration and preprocessing  
+- A CNN-based multi-task learning model  
+- Robust dataset filtering to handle incomplete annotations  
+- A reproducible training and inference pipeline  
+- Generation of predictions in the required JSON format  
+
+The final system is simple, reproducible, and suitable for integration into larger aerial surveying workflows.
